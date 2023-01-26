@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SHARED_TEMPLATES_DIR=https://github.com/fortify/repo-resources/raw/main/templates
+SHARED_TEMPLATES_DIR=https://raw.githubusercontent.com/fortify/shared-doc-resources/main/templates
 #SHARED_TEMPLATES_DIR=file://${SCRIPT_DIR}/../templates
 DOC_RESOURCES_DIR=${SCRIPT_DIR}
 DOC_TARGET_DIR=${DOC_RESOURCES_DIR}/..
@@ -72,7 +72,7 @@ expandVars() {
 
 for TEMPLATE_FILE in ${!TEMPLATE_TO_TARGET_MAP[@]}; do
     # TODO Generate error if template file cannot be found or is empty
-	expandVars < <(curl -s "${SHARED_TEMPLATES_DIR}/$TEMPLATE_FILE"; echo;) > /dev/null
+	expandVars < <(curl -sL "${SHARED_TEMPLATES_DIR}/$TEMPLATE_FILE"; echo;) > /dev/null
 done
 
 if [ -n "$ERRORS" ]; then
@@ -84,5 +84,5 @@ if [ -n "$ERRORS" ]; then
 fi
 
 for TEMPLATE_FILE in ${!TEMPLATE_TO_TARGET_MAP[@]}; do
-	expandVars < <(curl -s "${SHARED_TEMPLATES_DIR}/$TEMPLATE_FILE") > "${DOC_TARGET_DIR}/${TEMPLATE_TO_TARGET_MAP[$TEMPLATE_FILE]}"
+	expandVars < <(curl -sL "${SHARED_TEMPLATES_DIR}/$TEMPLATE_FILE") > "${DOC_TARGET_DIR}/${TEMPLATE_TO_TARGET_MAP[$TEMPLATE_FILE]}"
 done
