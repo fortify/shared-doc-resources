@@ -2,7 +2,7 @@
 
 Build secure software fast with [Fortify](https://www.microfocus.com/en-us/solutions/application-security). Fortify offers end-to-end application security solutions with the flexibility of testing on-premises and on-demand to scale and cover the entire software development lifecycle.  With Fortify, find security issues early and fix at the speed of DevOps. 
 
-This repository contains various shared resources for project documentation. This includes static documentation files like licenses and code of coduct, documentation templates like a template for a README.md file, and scripts for generating documentation artifacts based on those templates. The files in this repository are meant to be used for repositories owned by Micro Focus Fortify.
+This repository contains various shared resources for project documentation. This includes templates and scripts for generating common document resources like README and license file, and some common files that can be statically linked from documentation resources. The files in this repository are meant to be used for repositories owned by Micro Focus Fortify.
 
 ## Resources
 
