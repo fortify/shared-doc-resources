@@ -10,6 +10,6 @@ Use the following resources when creating a new repository.
 - README.template.md
   - template for generating a README.md file using the generate-readme.sh script
 - README.values.md
-  - values file used by generate-readme.sh script
+  - sample values file used by generate-readme.sh script. Edit this with values for your repo.
 - generate-readme.sh
   - Bash script to generate a README.md file based on the README.template.md and README.values.md
