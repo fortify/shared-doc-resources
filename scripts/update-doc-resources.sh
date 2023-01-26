@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#SHARED_TEMPLATES_DIR=https://github.com/fortify/repo-resources/raw/main/templates
-SHARED_TEMPLATES_DIR=file://${SCRIPT_DIR}/../templates
+SHARED_TEMPLATES_DIR=https://github.com/fortify/repo-resources/raw/main/templates
+#SHARED_TEMPLATES_DIR=file://${SCRIPT_DIR}/../templates
 DOC_RESOURCES_DIR=${SCRIPT_DIR}
 DOC_TARGET_DIR=${DOC_RESOURCES_DIR}/..
 VALUES_FILE=${DOC_RESOURCES_DIR}/template-values.md
