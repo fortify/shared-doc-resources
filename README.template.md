@@ -20,14 +20,14 @@ Support requests on the GitHub Issues page are handled on a best-effort basis; t
 
 Contributions like bug fixes and enhancements may be submitted through Pull Requests on this repository. Any code submitted in a pull request must conform to the [Contribution Guidelines]({project_dev_guidelines}).
 
-Before we can accept 3<sup>rd</sup>-party pull requests, you will first need to sign and submit the [Micro Focus Contribution Agreement](#TODO). Please make sure to mention your GitHub username when submitting the form, to allow us to verify that the author of a pull request has accepted this agreement. 
-
-TODO: How can the repository owner check that the author of a pull request (based on their GitHub username) has submitted the contribution agreement? Should we check with licensing@microfocus.com, or should we instruct users to add some Fortify mailbox on CC when submitting the agreement? Can we maintain a list of email addresses and corresponding GitHub usernames on some internal SharePoint site for easy reference?
+Before we can accept 3<sup>rd</sup>-party pull requests, you will first need to sign and submit the [Micro Focus Contribution Agreement](https://github.com/fortify/repo-resources/raw/main/Open%20Source%20Contribution%20Agreement%20Jan2020v1.pdf). Please make sure to mention your GitHub username when submitting the form, to allow us to verify that the author of a pull request has accepted this agreement. 
 
 ## Code of Conduct
 
-See [Code of Conduct](#TODO).
+See [Code of Conduct](https://github.com/fortify/repo-resources/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
+
+Copyright (c) Micro Focus. All rights reserved.
 
 {project_license}
