@@ -18,7 +18,7 @@ jobs:
         ref: ${{ github.head_ref }}
 
     - name: Update documentation resources
-      run: bash repo-resources/update-repo-doc-resources.sh
+      run: bash doc-resources/update-repo-doc-resources.sh
 
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
