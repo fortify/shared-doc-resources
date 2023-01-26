@@ -6,9 +6,9 @@ This repository contains various shared resources for project documentation. Thi
 
 ## Resources
 
-* **Static Files**: https://github.com/fortify/shared-doc-resources/static
-* **Templates**: https://github.com/fortify/shared-doc-resources/templates
-* **Scripts**: https://github.com/fortify/shared-doc-resources/scripts
+* **Static Files**: https://github.com/fortify/shared-doc-resources/tree/main/static
+* **Templates**: https://github.com/fortify/shared-doc-resources/tree/main/templates
+* **Scripts**: https://github.com/fortify/shared-doc-resources/tree/main/scripts
 
 ## Support
 
