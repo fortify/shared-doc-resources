@@ -1,16 +1,16 @@
-# {project_title} 
+# {{var:title}} 
 
 Build secure software fast with [Fortify](https://www.microfocus.com/en-us/solutions/application-security). Fortify offers end-to-end application security solutions with the flexibility of testing on-premises and on-demand to scale and cover the entire software development lifecycle.  With Fortify, find security issues early and fix at the speed of DevOps. 
 
-{project_description}
+{{var:description}}
 
 ## Resources
 
-{project_resources}
+{{var:resources}}
 
 ## Support
 
-The software is provided "as is", without warranty of any kind, and is not supported through the regular Micro Focus Support channels. Support requests may be submitted through the [GitHub Issues]({project_issues}) page for this repository. A (free) GitHub account is required to submit new issues or to comment on existing issues. 
+The software is provided "as is", without warranty of any kind, and is not supported through the regular Micro Focus Support channels. Support requests may be submitted through the [GitHub Issues]({{var:repo}}/issues) page for this repository. A (free) GitHub account is required to submit new issues or to comment on existing issues. 
 
 Support requests created through the GitHub Issues page may include bug reports, enhancement requests and general usage questions. Please avoid creating duplicate issues by checking whether there is any existing issue, either open or closed, that already addresses your question, bug or enhancement request. If an issue already exists, please add a comment to provide additional details if applicable.
 
@@ -18,16 +18,17 @@ Support requests on the GitHub Issues page are handled on a best-effort basis; t
 
 ## Contributions
 
-Contributions like bug fixes and enhancements may be submitted through Pull Requests on this repository. Any code submitted in a pull request must conform to the [Contribution Guidelines]({project_dev_guidelines}).
-
-Before we can accept 3<sup>rd</sup>-party pull requests, you will first need to sign and submit the [Micro Focus Contribution Agreement](https://github.com/fortify/repo-resources/raw/main/Open%20Source%20Contribution%20Agreement%20Jan2020v1.pdf). Please make sure to mention your GitHub username when submitting the form, to allow us to verify that the author of a pull request has accepted this agreement. 
+See [Contribution Guidelines](CONTRIBUTING.md).
 
 ## Code of Conduct
 
-See [Code of Conduct](https://github.com/fortify/repo-resources/blob/main/CODE_OF_CONDUCT.md).
+See [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 
-Copyright (c) Micro Focus. All rights reserved.
+See [LICENSE.txt](LICENSE.txt).
 
-{project_license}
+
+---
+
+*This document was auto-generated from a template; do not edit by hand*
