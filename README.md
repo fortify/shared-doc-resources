@@ -5,6 +5,8 @@ Use the following resources when creating a new repository.
   - Code of conduct policy
 - LICENSE
   - MIT License with Micro Focus copyright
+- Open Source Contribution Agreement Jan2020v1.pdf
+  - CLA for contributors that must be signed and returned before submitting pull requests
 - README.template.md
   - template for generating a README.md file using the generate-readme.sh script
 - README.values.md
