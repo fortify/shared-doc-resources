@@ -1,0 +1,1 @@
+The Gradle build uses various helper scripts from https://github.com/fortify-ps/shared-gradle-helpers; please refer to the documentation and comments in included scripts for more information. 
