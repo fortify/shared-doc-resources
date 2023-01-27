@@ -14,7 +14,7 @@ TEMPLATE_LOCATIONS=("file://${DOC_RESOURCES_DIR}/../templates" "file://${DOC_RES
 # Define include locations:
 # - Local doc-resources dir
 # - Remote includes dir in shared-doc-resources repo
-INCLUDE_LOCATIONS=("file://${DOC_RESOURCES_DIR}" "https://raw.githubusercontent.com/fortify/shared-doc-resources/main/includes")
+INCLUDE_LOCATIONS=("file://${DOC_RESOURCES_DIR}/../includes" "file://${DOC_RESOURCES_DIR}" "https://raw.githubusercontent.com/fortify/shared-doc-resources/main/includes")
 
 declare -A TEMPLATE_TO_TARGET_MAP=( 
   ["CODE_OF_CONDUCT.template.md"]="CODE_OF_CONDUCT.md" 
