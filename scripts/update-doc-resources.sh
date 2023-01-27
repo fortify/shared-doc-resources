@@ -12,6 +12,7 @@ VALUES_FILE=${DOC_RESOURCES_DIR}/template-values.md
 #   which will be the default behavior for most repo's     
 TEMPLATE_LOCATIONS=("file://${DOC_RESOURCES_DIR}/../templates" "file://${DOC_RESOURCES_DIR}/templates" "https://raw.githubusercontent.com/fortify/shared-doc-resources/main/templates")
 # Define include locations:
+# - Local includes dir in doc-resources parent directory 
 # - Local doc-resources dir
 # - Remote includes dir in shared-doc-resources repo
 INCLUDE_LOCATIONS=("file://${DOC_RESOURCES_DIR}/../includes" "file://${DOC_RESOURCES_DIR}" "https://raw.githubusercontent.com/fortify/shared-doc-resources/main/includes")
