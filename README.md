@@ -1,4 +1,4 @@
-# Shared documentation resources 
+# Shared Documentation Resources 
 
 
 <!-- START-INCLUDE:p.marketing-intro.md -->

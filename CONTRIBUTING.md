@@ -1,4 +1,4 @@
-# Contributing to Shared documentation resources
+# Contributing to Shared Documentation Resources
 
 ## Contribution Agreement
 

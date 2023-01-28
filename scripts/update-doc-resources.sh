@@ -1,6 +1,12 @@
 #!/bin/bash
 
-DOC_RESOURCES_DIR=${SCRIPT_DIR}
+if [ -z "${DOC_RESOURCES_DIR}" ]; then
+	DOC_RESOURCES_DIR=$( cd -- "$( dirname -- "$0" )" &> /dev/null && pwd )
+fi
+if [[ ! "${DOC_RESOURCES_DIR}" = */doc-resources ]]; then
+	echo "ERROR: DOC_RESOURCES_DIR must point to directory named doc-resources, not ${DOC_RESOURCES_DIR}" >&2
+	exit 1
+fi
 DOC_TARGET_DIR=${DOC_RESOURCES_DIR}/..
 VALUES_FILE=${DOC_RESOURCES_DIR}/template-values.md
 # Define template locations:
@@ -59,7 +65,7 @@ expandVar() {
 expandTemplateLine() {
 	local templateLine="$1"
 	local var=$(echo $templateLine | sed -n 's/.*{{var:\([a-z_-]*\)}}.*/\1/p')
-    local include=$(echo $templateLine | sed -n 's|.*{{include:\([a-zA-Z0-9_/.-]*\)}}.*|\1|p')
+    local include=$(echo $templateLine | sed -n 's|^\s*{{include:\([a-zA-Z0-9_/.-]*\)}}\s*$|\1|p')
     if [ -n "$var" ]; then
       expandVar "$var" "$templateLine"
     elif [ -n "$include" ]; then
