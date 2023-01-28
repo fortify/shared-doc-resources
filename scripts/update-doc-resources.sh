@@ -5,6 +5,10 @@ if [ -z "${DOC_RESOURCES_DIR}" ]; then
 fi
 if [[ ! "${DOC_RESOURCES_DIR}" = */doc-resources ]]; then
 	echo "ERROR: DOC_RESOURCES_DIR must point to directory named doc-resources, not ${DOC_RESOURCES_DIR}" >&2
+	echo "       Please make sure that this update-doc-resources.sh script is being sourced from a script" >&2
+	echo "       located in your doc-resources directory, or alternatively define the DOC_RESOURCES_DIR" >&2
+	echo "       environment variable to point to your doc-resources directory before sourcing this" >&2
+	echo "       update-doc-resources.sh script." >&2
 	exit 1
 fi
 DOC_TARGET_DIR=${DOC_RESOURCES_DIR}/..
