@@ -22,6 +22,7 @@ declare -A TEMPLATE_TO_TARGET_MAP=(
   ["CONTRIBUTING.template.md"]="CONTRIBUTING.md"
   ["LICENSE.MIT.template.txt"]="LICENSE.txt"
   ["README.template.md"]="README.md"
+  ["USAGE.template.md"]="USAGE.md"
 )
 
 declare -A BUILT_IN_VARS=( 
@@ -57,7 +58,7 @@ expandVar() {
 
 expandTemplateLine() {
 	local templateLine="$1"
-	local var=$(echo $templateLine | sed -n 's/.*{{var:\([a-z_]*\)}}.*/\1/p')
+	local var=$(echo $templateLine | sed -n 's/.*{{var:\([a-z_-]*\)}}.*/\1/p')
     local include=$(echo $templateLine | sed -n 's/.*{{include:\([^}]*\)}}.*/\1/p')
     if [ -n "$var" ]; then
       expandVar "$var" "$templateLine"
@@ -116,8 +117,20 @@ expandIncludeResource() {
 	if ! IFS= output=$(getIncludeResource "$1"); then
     	ERRORS=1
     else
+    	echoIncludeComment "START" $1
     	expandLines <<< "${output}"
+    	echoIncludeComment "END" $1
     fi
+}
+
+echoIncludeComment() {
+	local type="$1"
+	local includeFile="$2"
+	if [[ ! $includeFile = nocomments.* ]]; then
+		echo ""
+		echo "<!-- $type-INCLUDE:$includeFile -->"
+		echo ""
+	fi
 }
 
 expandTemplates() {

@@ -1,18 +1,36 @@
 # Shared documentation resources 
 
+
+<!-- START-INCLUDE:p.marketing-intro.md -->
+
 Build secure software fast with [Fortify](https://www.microfocus.com/en-us/solutions/application-security). Fortify offers end-to-end application security solutions with the flexibility of testing on-premises and on-demand to scale and cover the entire software development lifecycle.  With Fortify, find security issues early and fix at the speed of DevOps. 
+
+<!-- END-INCLUDE:p.marketing-intro.md -->
+
+
+
+<!-- START-INCLUDE:repo-intro.md -->
 
 This repository contains various shared resources for project documentation. This includes templates and scripts for generating common document resources like README and license file, and some common files that can be statically linked from documentation resources. The files in this repository are meant to be used for repositories owned by Micro Focus Fortify.
 
+<!-- END-INCLUDE:repo-intro.md -->
+
+
 ## Resources
+
+
+<!-- START-INCLUDE:repo-resources.md -->
 
 * **Usage**: [USAGE.md](USAGE.md)
 * **Static Files**: https://github.com/fortify/shared-doc-resources/tree/main/static
 * **Templates**: https://github.com/fortify/shared-doc-resources/tree/main/templates
 * **Scripts**: https://github.com/fortify/shared-doc-resources/tree/main/scripts
-* Contributing Guidelines: [CONTRIBUTING.md](CONTRIBUTING.md)
-* Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
-* License: [LICENSE.txt](LICENSE.txt)
+* **Contributing Guidelines**: [CONTRIBUTING.md](CONTRIBUTING.md)
+* **Code of Conduct**: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+* **License**: [LICENSE.txt](LICENSE.txt)
+
+<!-- END-INCLUDE:repo-resources.md -->
+
 
 ## Support
 
@@ -24,4 +42,4 @@ Support requests on the GitHub Issues page are handled on a best-effort basis; t
 
 ---
 
-*This document was auto-generated from a template; do not edit by hand*
+*This document was auto-generated from README.template.md; do not edit by hand*
