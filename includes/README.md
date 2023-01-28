@@ -1,6 +1,6 @@
 # Document Resources Includes
 
-This directory contains various files that may be included in templates using the `{{include:<file>}}` instruction. Such `include` instructions can be used in templates, and any files included from those templates (recursively). For example, includes can be used in the repository-specific `doc-resources/developer-info.md` file to include standard sections provided in this directory.
+This directory and its sub-directories contains various files that may be included in templates using the `{{include:<file>}}` instruction. Such `include` instructions can be used in templates, and any files included from those templates (recursively). For example, includes can be used in the repository-specific `doc-resources/developer-info.md` file to include standard sections provided in this directory.
 
 Files in this directory should use the following naming convention: `<header-level>.<name>.md`, where `<header-level>` corresponds to the header level provided in the include file, and `<name>` describes the contents of the include file. For example, if an include file starts with a 3<sup>rd</sup>-level section heading (identified by `###`), the file should be named `h3.<name>.md`. If an include file doesn't have a section heading (allowing text to be inserted in an existing section), it should be named `p.<name>.md` (`p` for paragraph).
 

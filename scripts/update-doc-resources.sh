@@ -59,7 +59,7 @@ expandVar() {
 expandTemplateLine() {
 	local templateLine="$1"
 	local var=$(echo $templateLine | sed -n 's/.*{{var:\([a-z_-]*\)}}.*/\1/p')
-    local include=$(echo $templateLine | sed -n 's/.*{{include:\([^}]*\)}}.*/\1/p')
+    local include=$(echo $templateLine | sed -n 's|.*{{include:\([a-zA-Z0-9_/.-]*\)}}.*|\1|p')
     if [ -n "$var" ]; then
       expandVar "$var" "$templateLine"
     elif [ -n "$include" ]; then
