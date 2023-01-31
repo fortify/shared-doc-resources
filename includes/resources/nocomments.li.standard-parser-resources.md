@@ -3,4 +3,4 @@
 * **Sample input files**: [sampleData](sampleData)
 * **Source code**: {{var:repo-url}}
 * **Automated builds**: {{var:repo-url}}/actions
-{{include:nocomments.li.contrib-conduct-licence.md}}
+{{include:resources/nocomments.li.contrib-conduct-licence.md}}
