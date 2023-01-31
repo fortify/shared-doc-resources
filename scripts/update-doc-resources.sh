@@ -136,7 +136,7 @@ expandIncludeResource() {
 echoIncludeComment() {
 	local type="$1"
 	local includeFile="$2"
-	if [[ ! $includeFile = nocomments.* ]]; then
+	if [[ ! $(basename $includeFile) = nocomments.* ]]; then
 		echo ""
 		echo "<!-- $type-INCLUDE:$includeFile -->"
 		echo ""
