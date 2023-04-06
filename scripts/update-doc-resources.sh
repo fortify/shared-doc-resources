@@ -36,7 +36,8 @@ declare -A TEMPLATE_TO_TARGET_MAP=(
 )
 
 declare -A BUILT_IN_VARS=( 
-  ["year"]="$(date +"%Y")" 
+  ["current-year"]="$(date +"%Y")"
+  ["copyright-years"]="{{var:current-year}}" 
 )
 
 ERRORS=0
@@ -53,16 +54,17 @@ logInfo() {
 expandVar() {
 	local var="$1"
 	local templateLine="$2"
-	local val=${BUILT_IN_VARS[$var]}
+	# Read variable value by taking all text between '# <var>' and the next occurance of '# '
+    IFS= local val=$(sed -n "/^# ${var}\s*/,/^# /{//!p;}" ${VALUES_FILE})
 	if [ -z "$val" ]; then
-      # Read variable value by taking all text between '# <var>' and the next occurance of '# '
-      IFS= val=$(sed -n "/^# ${var}\s*/,/^# /{//!p;}" ${VALUES_FILE})
+      val=${BUILT_IN_VARS[$var]}
     fi
     if [ -z "$val" ]; then
       logError "Value for variable '${var}' not found in ${VALUES_FILE}"
     else 
-      # Use bash variable expansion to replace the variable reference with the variable value
-      echo "${templateLine/\{\{var:${var}\}\}/$val}"
+      # Use bash variable expansion to replace the variable reference with the variable value,
+      # then call expandTemplateLine again to expand any nested variables/includes
+      expandTemplateLine "${templateLine/\{\{var:${var}\}\}/$val}"
     fi
 }
 
