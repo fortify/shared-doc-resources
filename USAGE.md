@@ -131,4 +131,4 @@ Apart from these standard variables, Markdown files in the `doc-resources` direc
 
 ---
 
-*This document was auto-generated from USAGE.template.md; do not edit by hand*
+*[This document was auto-generated from USAGE.template.md; do not edit by hand](https://github.com/fortify/shared-doc-resources/blob/main/USAGE.md)*

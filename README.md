@@ -57,4 +57,4 @@ Support requests on the GitHub Issues page are handled on a best-effort basis; t
 
 ---
 
-*This document was auto-generated from README.template.md; do not edit by hand*
+*[This document was auto-generated from README.template.md; do not edit by hand](https://github.com/fortify/shared-doc-resources/blob/main/USAGE.md)*

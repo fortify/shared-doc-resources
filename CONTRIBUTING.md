@@ -14,4 +14,4 @@ Contributions like bug fixes and enhancements may be submitted through Pull Requ
 
 ---
 
-*This document was auto-generated from CONTRIBUTING.template.md; do not edit by hand*
+*[This document was auto-generated from CONTRIBUTING.template.md; do not edit by hand](https://github.com/fortify/shared-doc-resources/blob/main/USAGE.md)*

@@ -22,4 +22,5 @@ SOFTWARE.
 
 ---
 
-*This document was auto-generated from LICENSE.MIT.template.txt; do not edit by hand*
+This document was auto-generated from LICENSE.MIT.template.txt; do not edit by hand.
+See https://github.com/fortify/shared-doc-resources/blob/main/USAGE.md for details.
