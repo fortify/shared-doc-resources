@@ -17,7 +17,7 @@ VALUES_FILE=${DOC_RESOURCES_DIR}/template-values.md
 # - Local templates dir in doc-resources parent directory,
 #   to allow for local testing of this script in the shared-doc-resources repo
 # - Local templates dir in doc-resources directory, 
-#   allowing repo's to override shared templates (not recommended) or to add templates once we add support for specifying extra templates
+#   allowing repo's to override shared templates (not recommended) or to add templates
 # - Remote templates dir in shared-doc-resources repo,
 #   which will be the default behavior for most repo's     
 TEMPLATE_LOCATIONS=("file://${DOC_RESOURCES_DIR}/../templates" "file://${DOC_RESOURCES_DIR}/templates" "https://raw.githubusercontent.com/fortify/shared-doc-resources/main/templates")
@@ -41,6 +41,18 @@ declare -A BUILT_IN_VARS=(
 )
 
 ERRORS=0
+
+updateTemplateMap() {
+  local templateDir="$DOC_RESOURCES_DIR/templates/"
+  if [ -d "$templateDir" ]; then
+    for f in $(find "$templateDir" -type f); do
+      local template=${f#"$templateDir"}
+      local target=${template//.template/}
+      echo "INFO: Adding local template templates/$template, target $target"
+      TEMPLATE_TO_TARGET_MAP["$template"]="$target"
+    done
+  fi
+}
 
 logError() {
 	echo "ERROR: $@" >&2
@@ -164,6 +176,7 @@ checkErrors() {
 	fi
 }
 
+updateTemplateMap
 logInfo "=== Performing dry-run to check for errors ==="
 dryRun=1 expandTemplates
 checkErrors && logInfo "=== Generating documentation resources ===" && expandTemplates && logInfo "=== Done ==="
