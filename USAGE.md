@@ -111,8 +111,8 @@ Following is an overview of common variables:
 * `copyright-years`
      * Year range for copyright statement(s), i.e. `2021-2023`
      * Referenced from: [LICENSE.MIT.template.txt](https://github.com/fortify/shared-doc-resources/blob/main/templates/LICENSE.MIT.template.txt)
-     * Default value: `2023`, i.e. `2023`
-     * Should be overridden in `template-values.md` with `<first year>-2023`, i.e. `2022-2023`, which would eventually be rendered as `2022-2024` if current year is 2024
+     * Default value: `2026`, i.e. `2023`
+     * Should be overridden in `template-values.md` with `<first year>-2026`, i.e. `2022-2026`, which would eventually be rendered as `2022-2024` if current year is 2024
 
 * `current-year`
      * Current year, i.e. '2023'
