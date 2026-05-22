@@ -15,7 +15,7 @@ jobs:
     - name: Update documentation resources
       run: bash doc-resources/update-repo-docs.sh
 
-    - uses: peter-evans/create-pull-request@v8
+    - uses: fortify/3rdparty-actions/actions/peter-evans/create-pull-request/v8@main
       with:
         commit-message: 'docs: Auto-update documentation resources' 
         branch: auto-doc-updates
