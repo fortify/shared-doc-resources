@@ -28,6 +28,10 @@ If you also installed the GitHub Actions workflow (see [Initial Setup](#initial-
 
 This automated workflow is mostly meant for automatically applying upstream changes, i.e., for updating documentation in individual repositories after resources in the `shared-doc-resources` repository have been updated. When updating documentation in a repository's `doc-resources` directory, it is recommended to run the script manually before committing the changes to have a single commit containing both the updated files in the `doc-resources` directory and the updated documentation that was generated from these updated `doc-resources` files, rather than having the GitHub Actions workflow generate a PR to apply those changes to the generated documentation files.
 
+### Pinning: `update-doc-resources.sh` and the reusable GitHub Actions workflow
+
+For repositories using the `fortify/shared-github` reusable `update-repo-docs` workflow, `update-doc-resources.sh` and the `templates`/`includes` it fetches remotely are pinned to a fixed commit SHA of this repository (via the `SHARED_DOC_RESOURCES_REF` environment variable, which both the script's own download and its internal `templates`/`includes` fallback URLs use), rather than tracking `main`. That pin is **not** bumped automatically: `fortify/shared-github`'s `local-bump-shared-doc-resources-pin` workflow runs daily (and can also be triggered on demand) and, when this repository's `main` has moved on, opens a pull request in `fortify/shared-github` updating `SHARED_DOC_RESOURCES_REF` in `reusable-update-repo-docs.yml`. That PR must be reviewed and merged before consuming repositories pick up the change.
+
 ## `doc-resources/*.md`
 
 Apart from the `update-repo-docs.sh` script discussed in the previous section, the setup scripts also install the Markdown files listed below. Each of these files is required for proper documentation generation, but where applicable, files may be empty. For example, if there is no information for developers, then `repo-devinfo.md` may be empty (but should not be removed).

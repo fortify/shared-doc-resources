@@ -10,4 +10,9 @@ on:
       
 jobs:
   update-repo-docs:
-    uses: fortify/shared-doc-resources/.github/workflows/update-repo-docs.yml@main
+    permissions:
+      contents: write
+      pull-requests: write
+    # TODO: replace <shared-github-sha> with the actual commit SHA once
+    # reusable-update-repo-docs.yml is committed/pushed to fortify/shared-github.
+    uses: fortify/shared-github/.github/workflows/reusable-update-repo-docs.yml@<shared-github-sha>

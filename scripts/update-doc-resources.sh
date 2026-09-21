@@ -13,6 +13,10 @@ if [[ ! "${DOC_RESOURCES_DIR}" = */doc-resources ]]; then
 fi
 DOC_TARGET_DIR=${DOC_RESOURCES_DIR}/..
 VALUES_FILE=${DOC_RESOURCES_DIR}/template-values.md
+# Ref (branch/tag/SHA) to fetch remote templates/includes from; callers that pin this
+# script itself to a SHA should also set this to that same SHA so templates/includes
+# are pinned consistently, not left tracking main.
+SHARED_DOC_RESOURCES_REF=${SHARED_DOC_RESOURCES_REF:-main}
 # Define template locations:
 # - Local templates dir in doc-resources parent directory,
 #   to allow for local testing of this script in the shared-doc-resources repo
@@ -20,12 +24,12 @@ VALUES_FILE=${DOC_RESOURCES_DIR}/template-values.md
 #   allowing repo's to override shared templates (not recommended) or to add templates
 # - Remote templates dir in shared-doc-resources repo,
 #   which will be the default behavior for most repo's     
-TEMPLATE_LOCATIONS=("file://${DOC_RESOURCES_DIR}/../templates" "file://${DOC_RESOURCES_DIR}/templates" "https://raw.githubusercontent.com/fortify/shared-doc-resources/main/templates")
+TEMPLATE_LOCATIONS=("file://${DOC_RESOURCES_DIR}/../templates" "file://${DOC_RESOURCES_DIR}/templates" "https://raw.githubusercontent.com/fortify/shared-doc-resources/${SHARED_DOC_RESOURCES_REF}/templates")
 # Define include locations:
 # - Local includes dir in doc-resources parent directory 
 # - Local doc-resources dir
 # - Remote includes dir in shared-doc-resources repo
-INCLUDE_LOCATIONS=("file://${DOC_RESOURCES_DIR}/../includes" "file://${DOC_RESOURCES_DIR}" "https://raw.githubusercontent.com/fortify/shared-doc-resources/main/includes")
+INCLUDE_LOCATIONS=("file://${DOC_RESOURCES_DIR}/../includes" "file://${DOC_RESOURCES_DIR}" "https://raw.githubusercontent.com/fortify/shared-doc-resources/${SHARED_DOC_RESOURCES_REF}/includes")
 
 declare -A TEMPLATE_TO_TARGET_MAP=( 
   ["CODE_OF_CONDUCT.template.md"]="CODE_OF_CONDUCT.md" 
