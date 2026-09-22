@@ -1,64 +1,74 @@
-# Shared Documentation Resources 
+# Shared Documentation Resources
 
+This repository is an internal resource bundle for OpenText Fortify repositories. It contains shared documentation templates, includes, static files, and setup scripts used by other repositories to generate their own standard documentation.
 
-<!-- START-INCLUDE:p.marketing-intro.md -->
+This repository is meant to be resources-only. Its own top-level documentation is maintained by hand; it does not use the shared generation workflow that it provides to downstream repositories.
 
-[Fortify Application Security](https://www.microfocus.com/en-us/solutions/application-security) provides your team with solutions to empower [DevSecOps](https://www.microfocus.com/en-us/cyberres/use-cases/devsecops) practices, enable [cloud transformation](https://www.microfocus.com/en-us/cyberres/use-cases/cloud-transformation), and secure your [software supply chain](https://www.microfocus.com/en-us/cyberres/use-cases/securing-the-software-supply-chain). As the sole Code Security solution with over two decades of expertise and acknowledged as a market leader by all major analysts, Fortify delivers the most adaptable, precise, and scalable AppSec platform available, supporting the breadth of tech you use and integrated into your preferred toolchain. We firmly believe that your great code [demands great security](https://www.microfocus.com/cyberres/application-security/developer-security), and with Fortify, go beyond 'check the box' security to achieve that.
+## Repository Contents
 
-<!-- END-INCLUDE:p.marketing-intro.md -->
+* [templates](templates) contains the shared document templates, such as README, usage, contributing, code of conduct, and license templates.
+* [includes](includes) contains reusable Markdown fragments that templates or repository-specific docs can include.
+* [scripts](scripts) contains the document generation script used by downstream repositories.
+* [setup](setup) contains bootstrap files copied into downstream repositories.
+* [static](static) contains static shared assets.
 
+## Usage
 
+Run one of the setup scripts from the root of a downstream repository.
 
-<!-- START-INCLUDE:repo-intro.md -->
+For GitHub-hosted repositories, install the local `doc-resources` files and the GitHub Actions workflow that keeps generated docs current:
 
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/fortify/shared-doc-resources/main/setup/setup-github.sh)
+```
 
-<!-- START-INCLUDE:repo-purpose.md -->
+For repositories that should not receive the GitHub Actions workflow, install only the local `doc-resources` files:
 
-The files in this repository are meant to be used for repositories owned by OpenText Fortify. Its main purposes are as follows:
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/fortify/shared-doc-resources/main/setup/setup.sh)
+```
 
-* Ensure that every repository (that utilizes shared-doc-resources) contains a standard set of documentation files, like README.md, LICENSE.txt, USAGE.md, ...
-* Ensure consistent documentation contents, like having the same support statement and marketing intro in every repository.
+The setup scripts create a `doc-resources` directory in the downstream repository. The GitHub setup also creates `.github/workflows/update-repo-docs.yml` and pins it to the current `fortify/shared-github` workflow commit.
 
-<!-- END-INCLUDE:repo-purpose.md -->
+## Downstream `doc-resources`
 
+The generated `doc-resources` directory is owned by the downstream repository and should be edited there. These files drive the generated top-level docs in that repository:
 
-Note that some of the standard documentation contents are duplicated between this repository and the https://github.com/fortify/.github repository, which contains default community health files and organization readme file. The `shared-doc-resources` and `.github` repositories are not automatically synchronized. When updating standard documentation contents in this repository, please make sure to apply corresponding changes to the https://github.com/fortify/.github repository. 
+* `template-values.md` defines values used by `{{var:<name>}}` references in templates, includes, and local resources.
+* `repo-intro.md` provides introductory README content.
+* `repo-resources.md` lists useful repository resources for the README.
+* `repo-usage.md` provides the content rendered into `USAGE.md`.
+* `repo-devinfo.md` provides contributor/developer information rendered into `CONTRIBUTING.md`.
+* `update-repo-docs.sh` runs the document generator.
 
-For example, when updating [templates/CODE_OF_CONDUCT.template.md](templates/CODE_OF_CONDUCT.template.md) in this repository, you should also update https://github.com/fortify/.github/blob/main/CODE_OF_CONDUCT.md. Similarly, when updating the marketing statement in [includes/p.marketing-intro.md](includes/p.marketing-intro.md), you should also update the marketing statement in the [organization README.md](https://github.com/fortify/.github/blob/main/profile/README.md).
+Before first running `doc-resources/update-repo-docs.sh` in a downstream repository, move any existing README, usage, contributing, or related content into the appropriate `doc-resources` files. The generator overwrites its target top-level docs.
 
-<!-- END-INCLUDE:repo-intro.md -->
+## Includes And Variables
 
+Templates and Markdown resources can use include directives on a line by themselves:
 
-## Resources
+```markdown
+{{include:usage/h1.standard-parser-usage.md}}
+```
 
+Included files are resolved from the downstream repository's `doc-resources` directory first, then from this repository's shared `includes` directory. Includes may include other files recursively.
 
-<!-- START-INCLUDE:repo-resources.md -->
+Templates and Markdown resources can also use variable references:
 
-* **Usage**: [USAGE.md](USAGE.md)
-* **Static Files**: https://github.com/fortify/shared-doc-resources/tree/main/static
-* **Templates**: https://github.com/fortify/shared-doc-resources/tree/main/templates
-* **Scripts**: https://github.com/fortify/shared-doc-resources/tree/main/scripts
-* **Contributing Guidelines**: [CONTRIBUTING.md](CONTRIBUTING.md)
-* **Code of Conduct**: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
-* **License**: [LICENSE.txt](LICENSE.txt)
+```markdown
+{{var:repo-title}}
+```
 
-<!-- END-INCLUDE:repo-resources.md -->
+Variables are defined as headings in `doc-resources/template-values.md`. Repository-specific variables override built-in variables such as `current-year` and `copyright-years`.
 
+## Pinning Model
 
+The reusable GitHub Actions workflow in `fortify/shared-github` pins the shared documentation resources it consumes through `pins/shared-doc-resources.sha`. The local `doc-resources/update-repo-docs.sh` wrapper resolves and uses that same pin instead of fetching this repository's `main` branch directly.
 
-<!-- START-INCLUDE:h2.support.md -->
+The GitHub setup script pins downstream repositories to the current `fortify/shared-github` workflow SHA. The local wrapper intentionally does not pin `SHARED_GITHUB_REF` in the installed script, because the shared workflow pin updater only maintains workflow files. Local runs use the pin from `fortify/shared-github` `main` unless `SHARED_GITHUB_REF` or `SHARED_DOC_RESOURCES_REF` is set explicitly.
 
-## Support
+## Maintaining This Repository
 
-For general assistance, please join the [Fortify Community](https://community.opentext.com/cybersec/fortify/) to get tips and tricks from other users and the OpenText team.
- 
-OpenText customers can contact our world-class [support team](https://www.opentext.com/support/opentext-enterprise/) for questions, enhancement requests and bug reports. You can also raise questions and issues through your OpenText Fortify representative like Customer Success Manager or Technical Account Manager if applicable.
+Keep this repository focused on reusable documentation resources. Do not add a root `.github` workflow directory or a root `doc-resources` directory for this repository itself; those are downstream-consumer artifacts.
 
-You may also consider raising questions or issues through the [GitHub Issues page](https://github.com/fortify/shared-doc-resources/issues) (if available for this repository), providing public visibility and allowing anyone (including all contributors) to review and comment on your question or issue. Note that this requires a GitHub account, and given public visibility, you should refrain from posting any confidential data through this channel. 
-
-<!-- END-INCLUDE:h2.support.md -->
-
-
----
-
-*[This document was auto-generated from README.template.md; do not edit by hand](https://github.com/fortify/shared-doc-resources/blob/main/USAGE.md)*
+When changing templates or includes that duplicate content maintained elsewhere, update the corresponding source at the same time. In particular, code-of-conduct and organization-level profile content may also live in the Fortify organization community-health repository: https://github.com/fortify/.github.

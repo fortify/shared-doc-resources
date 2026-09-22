@@ -1,17 +1,11 @@
 # Contributing to Shared Documentation Resources
 
-## Contribution Agreement
+This repository is intended for internal OpenText Fortify maintenance. Use normal pull-request review for changes to shared templates, includes, setup scripts, and static resources.
 
-Contributions like bug fixes and enhancements may be submitted through Pull Requests on this repository. Before we can accept 3<sup>rd</sup>-party pull requests, you will first need to sign and submit the [Contribution Agreement](https://github.com/fortify/repo-resources/raw/main/static/Open%20Source%20Contribution%20Agreement%20Jan2020v1.pdf). Please make sure to mention your GitHub username when submitting the form, to allow us to verify that the author of a pull request has accepted this agreement. 
+## Change Guidelines
 
+* Keep this repository resources-only. Do not add root `.github` workflows or root `doc-resources` files for this repository itself.
+* Update shared templates, includes, scripts, setup resources, or static assets directly.
+* Keep top-level documentation in this repository manually maintained.
+* Test setup-script changes in a temporary downstream repository directory before merging.
 
-<!-- START-INCLUDE:repo-devinfo.md -->
-
-<!-- We don't provide any developer info for now -->
-
-<!-- END-INCLUDE:repo-devinfo.md -->
-
-
----
-
-*[This document was auto-generated from CONTRIBUTING.template.md; do not edit by hand](https://github.com/fortify/shared-doc-resources/blob/main/USAGE.md)*
